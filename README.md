@@ -5,7 +5,6 @@
 ## Features
 
 - Gallery of kitten photos sorted by themes
-
 - Account creation
 - Shopping cart and secure payment system
 - Smart search by breed, color, vibe, or emotion
@@ -13,7 +12,6 @@
 - Add to favorites
 - User data modification, export, and deletion
 
----
 
 ## Technologies Used
 
