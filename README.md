@@ -25,4 +25,4 @@ D’ici la fin de l’année, nous comptons vendre pour 20 000€ de photos.
 À moyen terme, nous voulons vendre d’autre objets relatifs à l’univers félin et être les leaders des chats. Avec ces diversifications, nous comptons attendre un chiffre d’affaires de 250 000€.
 
 ## Wireframe
-![wireframe]()
+![wireframe](wireframe.png)
