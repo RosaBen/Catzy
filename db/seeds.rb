@@ -33,12 +33,11 @@ kittens_url =[
 "https://www.pexels.com/fr-fr/photo/chat-calico-sur-focus-photo-1404819/"
 ]
 20.times do
-  item = Item.create!(
-    title: "chaton "+Faker::Emotion.noun+Faker::Emotion.adjective,
+Item.create!(
+    title: "chaton - "+Faker::Emotion.adjective,
     description: Faker::Lorem.paragraph(sentence_count: 2),
     price: Faker::Commerce.price(range: 0..100.0, as_string: true),
     image_url: kittens_url.sample
   )
-  puts "Article créé : #{item.title} - Prix : #{item.price}€"
 end
 puts "✅ Kittens ajoutés."
