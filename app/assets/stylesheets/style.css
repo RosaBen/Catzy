@@ -1,5 +1,5 @@
 :root {
-  /* Couleurs */
+  /* Couleurs pincipales */
   --color-primary-color: #e2d5e6;
   --color-medium-gray: #666666;
   --color-dark-gray: #313131;
@@ -55,6 +55,31 @@ body {
   color: var(--color-dark-gray);
   font-size: 30px;
 }
+
+/* --------------------------------- */
+/*              footer               */
+/* --------------------------------- */
+
+main {
+  flex: 1;
+}
+
+.custom-footer {
+  background-color: var(--color-primary-color);
+  height: 150px;
+  width: 100vw;
+  font-size: 14px;
+}
+
+.custom-footer a {
+  color: var(--color-dark-gray);
+  text-decoration: none;
+}
+
+.custom-footer a:hover {
+  text-decoration: underline;
+}
+
 
 
 
