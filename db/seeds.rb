@@ -2,8 +2,10 @@ require "faker"
 
 puts "🔄 Nettoyage des données..."
 Item.delete_all
+User.delete_all
 if ActiveRecord::Base.connection.adapter_name == 'PostgreSQL'
   ActiveRecord::Base.connection.reset_pk_sequence!('items')
+  ActiveRecord::Base.connection.reset_pk_sequence!('users')
 end
 
 puts "✅ Données nettoyées."
@@ -33,12 +35,36 @@ kittens_url =[
 "https://www.pexels.com/fr-fr/photo/chat-calico-sur-focus-photo-1404819/"
 ]
 20.times do
-  item = Item.create!(
+Item.create!(
     title: "chaton "+Faker::Emotion.noun+Faker::Emotion.adjective,
     description: Faker::Lorem.paragraph(sentence_count: 2),
     price: Faker::Commerce.price(range: 0..100.0, as_string: true),
     image_url: kittens_url.sample
   )
-  puts "Article créé : #{item.title} - Prix : #{item.price}€"
 end
 puts "✅ Kittens ajoutés."
+
+
+puts "👥 Création des utilisateurs..."
+
+avatar_urls = [
+"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543325.htm#fromView=keyword&page=1&position=0&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
+"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543735.htm#fromView=keyword&page=1&position=1&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
+"https://fr.freepik.com/photos-gratuite/femme-aux-longs-cheveux-bruns_414986247.htm#fromView=keyword&page=1&position=8&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
+"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543791.htm#fromView=keyword&page=1&position=17&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
+"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543332.htm#fromView=keyword&page=1&position=16&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar"
+]
+
+password = "password"
+
+10.times do
+User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.unique.email,
+    password: password,
+    password_confirmation: password,
+    avatar: avatar_urls.sample
+  )
+end
+puts "✅ Utilisateurs ajoutés."
