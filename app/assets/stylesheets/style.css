@@ -95,12 +95,18 @@ main {
   background-position: center;
 }
 
-.hero-section h1 {
+.hero-content {
+  position: relative;
+  z-index: 2; 
+}
+.hero-content h1 {
   font-size: 150px; 
+  color: var(--color-dark-gray);
 }
 
-.hero-section p.lead {
+.hero-content p.lead {
   font-size: 70px;
+  color: var(--color-medium-gray);
 }
 
 .hero-section::before {
