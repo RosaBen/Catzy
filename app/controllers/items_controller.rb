@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
+<<<<<<< HEAD
+=======
     puts @items.inspect
   end
 
@@ -12,5 +14,6 @@ private
 
   def item_params
     params.require(:item).permit(:title, :description, :price, :image_url)
+>>>>>>> dev
   end
 end
