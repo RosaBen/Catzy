@@ -130,34 +130,34 @@ main {
   border: none;
 }
 
-button.btn.btn-primary {
+.btn.btn-primary {
   background-color: var(--color-primary-color);        
   color: var(--color-dark-gray);               
  
 }
 
-button.btn.btn-danger {
+.btn.btn-danger {
   background-color: var(--color-danger);       
   color: var(--color-dark-gray);               
 }
 
-button.btn.btn-warning {
+.btn.btn-warning {
   background-color: var(--color-warning);       
   color: var(--color-dark-gray);               
 }
 
-button.btn.btn-success {
+.btn.btn-success {
   background-color: var(--color-success);       
   color: var(--color-dark-gray);               
 }
 
-button.btn.btn-lg {
+.btn.btn-lg {
   border-radius: 26px;  
   font-size: 1.4rem;        
   padding: 12px 26px;
 }
 
-button.btn.btn-sm {
+.btn.btn-sm {
   border-radius: 25px;  
   font-size: 1rem;        
   padding: 6px 18px;
