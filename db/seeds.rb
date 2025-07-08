@@ -1,4 +1,5 @@
 require "faker"
+require "open-uri"
 
 puts "🔄 Nettoyage des données..."
 Item.delete_all
@@ -49,11 +50,14 @@ puts "✅ Kittens ajoutés."
 puts "👥 Création des utilisateurs..."
 
 avatar_urls = [
-"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543325.htm#fromView=keyword&page=1&position=0&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
-"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543735.htm#fromView=keyword&page=1&position=1&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
-"https://fr.freepik.com/photos-gratuite/femme-aux-longs-cheveux-bruns_414986247.htm#fromView=keyword&page=1&position=8&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
-"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543791.htm#fromView=keyword&page=1&position=17&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
-"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543332.htm#fromView=keyword&page=1&position=16&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar"
+  "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150",
+  "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150",
+  "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150",
+  "https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=150",
+  "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=150",
+  "pexels-pixabay-416160.jpg", # Asset local
+  "cat-2083492_960_720.jpg",   # Asset local
+  "hero-image.jpg"             # Asset local
 ]
 
 password = "password"
@@ -61,13 +65,35 @@ password = "password"
 10.times do
   firstname = Faker::Name.first_name
   lastname = Faker::Name.last_name
-User.create!(
+  email = "#{firstname}.#{lastname}#{rand(1..100)}@yopmail.com"
+
+  user = User.create!(
     first_name: firstname,
     last_name: lastname,
-    email: "#{firstname}.#{lastname}#{rand(1..100)}@yopmail.com",
+    email: email,
     password: password,
     password_confirmation: password,
-    avatar: avatar_urls.sample
   )
+
+  avatar_url = avatar_urls.sample
+
+  begin
+    if avatar_url.match?(/^https?:\/\//)
+      # URL externe
+      file = URI.open(avatar_url, "User-Agent" => "Ruby/#{RUBY_VERSION}")
+      filename = "avatar_#{user.id}_#{Time.current.to_i}.jpg"
+      user.avatar.attach(io: file, filename: filename, content_type: "image/jpeg")
+    else
+      # Asset local - on l'ajoute comme attribut personnalisé si nécessaire
+      # ou on peut attacher le fichier local
+      file_path = Rails.root.join("app", "assets", "images", avatar_url)
+      if File.exist?(file_path)
+        user.avatar.attach(io: File.open(file_path), filename: avatar_url, content_type: "image/jpeg")
+      end
+    end
+    user.save!
+  rescue => e
+    puts "⚠️  Erreur lors de l'ajout de l'avatar pour #{user.email}: #{e.message}"
+  end
 end
-puts "✅ Utilisateurs ajoutés."
+  puts "✅ Utilisateurs ajoutés."
