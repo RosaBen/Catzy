@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1 class="mt-5 mb-5">Minou <%= @item&.id %></h1>
+  <h1 class="mt-5 mb-5"><%= @item&.title %></h1>
 
   <div class="row align-items-stretch">
 
@@ -12,8 +12,7 @@
 
     <div class="col-md-7 d-flex flex-column justify-content-between">
       <div>
-        <h2 class="mb-2"><%= @item&.title %></h2>
-        <p><strong>Description :</strong> <%= @item&.description %></p>
+        <p> <%= @item&.description %></p>
         <p class="lead"><%= @item&.price %>€</p>
       </div>
 
