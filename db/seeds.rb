@@ -37,11 +37,7 @@ kittens=[
 
 20.times do
 Item.create!(
-<<<<<<< HEAD
     title: "chaton - "+Faker::Emotion.adjective,
-=======
-    title: "chaton "+Faker::Emotion.noun+Faker::Emotion.adjective,
->>>>>>> dev
     description: Faker::Lorem.paragraph(sentence_count: 2),
     price: Faker::Commerce.price(range: 0..100.0, as_string: true),
     image_url: kittens.sample
