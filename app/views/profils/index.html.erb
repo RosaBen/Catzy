@@ -5,6 +5,11 @@
       <% if current_user.avatar.present? %>
       <%= image_tag current_user.avatar, alt: "Avatar de #{current_user.fullname}", style: "width: 150px; height: auto;" %>
     <% end %>
+          <h3>Changer d'avatar ?</h3>
+<%= form_tag avatars_path, multipart: true do %>
+  <%= file_field_tag :avatar %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
     <h3><%= current_user.fullname %></h3>
     <p> <%= current_user.email %></p>
     <button>Exporter mes données</button>
