@@ -1,9 +1,75 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require "faker"
+
+puts "🔄 Nettoyage des données..."
+Item.delete_all
+User.delete_all
+if ActiveRecord::Base.connection.adapter_name == 'PostgreSQL'
+  ActiveRecord::Base.connection.reset_pk_sequence!('items')
+  ActiveRecord::Base.connection.reset_pk_sequence!('users')
+end
+
+puts "✅ Données nettoyées."
+
+puts "📦 Création de 20 articles..."
+
+kittens=[
+"https://images.pexels.com/photos/596590/pexels-photo-596590.jpeg",
+"https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg",
+"https://images.pexels.com/photos/1870376/pexels-photo-1870376.jpeg",
+ "https://images.pexels.com/photos/1444321/pexels-photo-1444321.jpeg",
+ "https://images.pexels.com/photos/290164/pexels-photo-290164.jpeg",
+ "https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg",
+ "https://images.pexels.com/photos/2061057/pexels-photo-2061057.jpeg",
+ "https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg",
+"https://images.pexels.com/photos/257532/pexels-photo-257532.jpeg",
+"https://images.pexels.com/photos/127027/pexels-photo-127027.jpeg",
+"https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg",
+"https://images.pexels.com/photos/735423/pexels-photo-735423.jpeg",
+"https://images.pexels.com/photos/1472999/pexels-photo-1472999.jpeg",
+"https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg",
+"https://images.pexels.com/photos/2558605/pexels-photo-2558605.jpeg",
+"https://images.pexels.com/photos/669015/pexels-photo-669015.jpeg",
+"https://images.pexels.com/photos/1981111/pexels-photo-1981111.jpeg",
+"https://images.pexels.com/photos/479009/pexels-photo-479009.jpeg",
+"https://images.pexels.com/photos/171227/pexels-photo-171227.jpeg",
+"https://images.pexels.com/photos/923360/pexels-photo-923360.jpeg"
+]
+
+20.times do
+Item.create!(
+<<<<<<< HEAD
+    title: "chaton - "+Faker::Emotion.adjective,
+=======
+    title: "chaton "+Faker::Emotion.noun+Faker::Emotion.adjective,
+>>>>>>> dev
+    description: Faker::Lorem.paragraph(sentence_count: 2),
+    price: Faker::Commerce.price(range: 0..100.0, as_string: true),
+    image_url: kittens.sample
+  )
+end
+puts "✅ Kittens ajoutés."
+
+
+puts "👥 Création des utilisateurs..."
+
+avatar_urls = [
+"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543325.htm#fromView=keyword&page=1&position=0&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
+"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543735.htm#fromView=keyword&page=1&position=1&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
+"https://fr.freepik.com/photos-gratuite/femme-aux-longs-cheveux-bruns_414986247.htm#fromView=keyword&page=1&position=8&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
+"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543791.htm#fromView=keyword&page=1&position=17&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar",
+"https://fr.freepik.com/images-ia-gratuites/avatar-androgyne-personne-queer-non-binaire_133543332.htm#fromView=keyword&page=1&position=16&uuid=67d0e844-76c6-4118-9684-0cc8549ad136&query=Avatar"
+]
+
+password = "password"
+
+10.times do
+User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.unique.email,
+    password: password,
+    password_confirmation: password,
+    avatar: avatar_urls.sample
+  )
+end
+puts "✅ Utilisateurs ajoutés."
