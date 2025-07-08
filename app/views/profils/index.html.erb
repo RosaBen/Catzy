@@ -1,10 +1,15 @@
 <h2>Mon Profil</h2>
+
+
+
 <div>
   <% if current_user %>
 <div>
-      <% if current_user.avatar.present? %>
-      <%= image_tag current_user.avatar, alt: "Avatar de #{current_user.fullname}", style: "width: 150px; height: auto;" %>
-    <% end %>
+      <% if current_user.avatar.attached? %>
+        <%= user_avatar_image(current_user, alt: "Avatar de #{current_user.fullname}") %>
+      <% else %>
+        <%= image_tag "pexels-pixabay-416160.jpg", alt: "Avatar par défaut"%>
+      <% end %>
           <h3>Changer d'avatar ?</h3>
 <%= form_tag avatars_path, multipart: true do %>
   <%= file_field_tag :avatar %>
@@ -14,7 +19,7 @@
     <p> <%= current_user.email %></p>
     <button>Exporter mes données</button>
     <button>Supprimer mon compte</button>
-    <button>Modifier</button>
+    <%= link_to "Modifier", edit_profil_path, class: "btn btn-primary" %>
 </div>
 <div>
   <h3>Mes favoris</h3>

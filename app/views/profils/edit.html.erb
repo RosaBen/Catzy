@@ -1,0 +1,38 @@
+<h2>Modifier mon Profil</h2>
+
+<%= form_with model: @user, url: profil_path, method: :patch, local: true, html: {
+  multipart: true 
+} do |f| %>
+
+<div class="field">
+  <%= f.label :first_name, "Prénom"%><br>
+  <%= f.text_field :first_name, value: @user.first_name %>
+</div>
+<div class="field">
+  <%= f.label :last_name, "Nom"%><br>
+  <%= f.text_field :last_name, value: @user.last_name %>
+</div>
+<div class="field">
+  <%= f.label :email, "Email"%><br>
+  <%= f.email_field :email, value: @user.email %>
+</div>
+<div class="field">
+  <%= f.label :avatar, "Changer d'avatar ?"%><br>
+  
+  <!-- Affichage de l'avatar actuel -->
+  <% if @user.avatar.attached? %>
+    <p><strong>Avatar actuel :</strong></p>
+    <%= user_avatar_image(@user) %>
+    <br>
+    <small>Sélectionnez un nouveau fichier pour changer l'avatar (laisser vide pour conserver l'actuel)</small><br>
+  <% else %>
+    <small>Sélectionnez un fichier pour ajouter un avatar</small><br>
+  <% end %>
+  
+  <%= f.file_field :avatar %>
+</div>
+<div class="actions">
+  <%= f.submit "Mettre à jour mon profil" %>
+  <%= link_to "Annuler", profil_path %>
+</div>
+<% end %>

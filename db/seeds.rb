@@ -50,14 +50,9 @@ puts "✅ Kittens ajoutés."
 puts "👥 Création des utilisateurs..."
 
 avatar_urls = [
-  "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150",
-  "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150",
-  "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150",
-  "https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=150",
-  "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=150",
-  "pexels-pixabay-416160.jpg", # Asset local
-  "cat-2083492_960_720.jpg",   # Asset local
-  "hero-image.jpg"             # Asset local
+  "pexels-pixabay-416160.jpg",
+  "cat-2083492_960_720.jpg",
+  "hero-image.jpg"
 ]
 
 password = "password"
@@ -79,13 +74,12 @@ password = "password"
 
   begin
     if avatar_url.match?(/^https?:\/\//)
-      # URL externe
+
       file = URI.open(avatar_url, "User-Agent" => "Ruby/#{RUBY_VERSION}")
       filename = "avatar_#{user.id}_#{Time.current.to_i}.jpg"
       user.avatar.attach(io: file, filename: filename, content_type: "image/jpeg")
     else
-      # Asset local - on l'ajoute comme attribut personnalisé si nécessaire
-      # ou on peut attacher le fichier local
+
       file_path = Rails.root.join("app", "assets", "images", avatar_url)
       if File.exist?(file_path)
         user.avatar.attach(io: File.open(file_path), filename: avatar_url, content_type: "image/jpeg")

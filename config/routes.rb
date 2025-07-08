@@ -17,5 +17,8 @@ Rails.application.routes.draw do
 
   resources :items
   get "profil", to: "profils#index", as: :profil
+  patch "profil", to: "profils#update"
+  put "profil", to: "profils#update"
+  get "profil/edit", to: "profils#edit", as: :edit_profil
   resources :avatars, only: [ :create, :update, :destroy ]
 end
