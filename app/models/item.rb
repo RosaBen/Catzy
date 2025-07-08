@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items
+  has_many :cart_items, dependent: :destroy
+  has_many :carts, through: :cart_items
   
   validates :description, length: { maximum: 500 }
   validates :title, length: { maximum: 30 }
