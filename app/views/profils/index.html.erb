@@ -1,20 +1,12 @@
 <h2>Mon Profil</h2>
-
-
-
 <div>
   <% if current_user %>
 <div>
       <% if current_user.avatar.attached? %>
-        <%= user_avatar_image(current_user, alt: "Avatar de #{current_user.fullname}") %>
+        <%= user_avatar(current_user, alt: "Avatar de #{current_user.fullname}") %>
       <% else %>
-        <%= image_tag "pexels-pixabay-416160.jpg", alt: "Avatar par défaut"%>
+        <%= image_tag "pexels-pixabay-416160.jpg", alt: "Avatar par défaut", style: "width: 50px; height: auto;"%>
       <% end %>
-          <h3>Changer d'avatar ?</h3>
-<%= form_tag avatars_path, multipart: true do %>
-  <%= file_field_tag :avatar %>
-  <%= submit_tag "mettre à jour" %>
-<% end %>
     <h3><%= current_user.fullname %></h3>
     <p> <%= current_user.email %></p>
     <button>Exporter mes données</button>

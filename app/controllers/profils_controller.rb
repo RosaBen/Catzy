@@ -15,13 +15,8 @@ class ProfilsController < ApplicationController
 
   def update
     @user = current_user
-    update_params = user_params.dup
-    if params[:user][:avatar].present?
-    else
-      update_params.delete(:avatar)
-    end
 
-    if @user.update(update_params)
+    if @user.update(user_params)
       if params[:user][:avatar].present?
         flash[:notice] = "Profil et avatar mis à jour avec succès!"
       else
@@ -37,6 +32,6 @@ class ProfilsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :avatar, :email)
+    params.require(:user).permit(:first_name, :last_name, :email, :avatar)
   end
 end

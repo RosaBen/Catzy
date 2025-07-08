@@ -17,18 +17,12 @@
   <%= f.email_field :email, value: @user.email %>
 </div>
 <div class="field">
-  <%= f.label :avatar, "Changer d'avatar ?"%><br>
+  <%= f.label :avatar, "Avatar"%><br>
   
-  <!-- Affichage de l'avatar actuel -->
   <% if @user.avatar.attached? %>
-    <p><strong>Avatar actuel :</strong></p>
-    <%= user_avatar_image(@user) %>
+    <%= user_avatar(@user) %>
     <br>
-    <small>Sélectionnez un nouveau fichier pour changer l'avatar (laisser vide pour conserver l'actuel)</small><br>
-  <% else %>
-    <small>Sélectionnez un fichier pour ajouter un avatar</small><br>
   <% end %>
-  
   <%= f.file_field :avatar %>
 </div>
 <div class="actions">
