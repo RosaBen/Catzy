@@ -1,0 +1,15 @@
+<h2>Minou <%= @item&.id %></h2>
+<div>
+  <% if @item&.image_url.present? %>
+    <%= image_tag @item.image_url, alt: @item.title, style: "width: 300px; height: auto;" %>
+  <% end %>
+  <h3><%= @item&.title %></h3>
+  <p><strong>Description:</strong> <%= @item&.description %></p>
+  <p><strong>Price:</strong> <%= @item&.price %>€</p>
+  <button type="button">Ajouter au panier</button>
+</div>
+<div>
+  <h3>Articles similaires: </h3>
+
+</div>
+<button>Retour galerie</button>
