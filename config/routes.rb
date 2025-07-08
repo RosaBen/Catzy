@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "items#index"
-
-  get "items/index"
+  # get "items/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -17,8 +16,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :items
-
-  # Route pour le profil de l'utilisateur connecté
-  get "profil", to: "profils#index"
+  get "profil", to: "profils#index", as: :profil
   resources :avatars, only: [ :create, :update, :destroy ]
 end

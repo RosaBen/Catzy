@@ -59,10 +59,12 @@ avatar_urls = [
 password = "password"
 
 10.times do
+  firstname = Faker::Name.first_name
+  lastname = Faker::Name.last_name
 User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.unique.email,
+    first_name: firstname,
+    last_name: lastname,
+    email: "#{firstname}.#{lastname}#{rand(1..100)}@yopmail.com",
     password: password,
     password_confirmation: password,
     avatar: avatar_urls.sample
