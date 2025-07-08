@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-# TODO: replace root path
+  devise_for :users
 root "items#index"
-resources :items
 end
