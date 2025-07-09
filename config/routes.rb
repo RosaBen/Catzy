@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "items#index"
-
-  get "items/index"
+  # get "items/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # get "up" => "rails/health#show", as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
@@ -17,5 +16,9 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :items
-  resources :profils
+  get "profil", to: "profils#index", as: :profil
+  patch "profil", to: "profils#update"
+  put "profil", to: "profils#update"
+  get "profil/edit", to: "profils#edit", as: :edit_profil
+  resources :avatars, only: [ :create, :update, :destroy ]
 end
