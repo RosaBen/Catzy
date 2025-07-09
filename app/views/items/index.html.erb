@@ -1,5 +1,4 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<h1>Liste des chatons</h1>
 
 <% @items.each do |item| %>
       <tr>
@@ -10,3 +9,10 @@
         <td><%= link_to 'En savoir plus', item %></td>
       </tr>
     <% end %>
+
+    <p style="color: green"><%= notice %></p>
+<% if params[:success] %>
+  <p>Paiement réussi ! 🎉</p>
+<% elsif params[:canceled] %>
+  <p>Paiement annulé.</p>
+<% end %>

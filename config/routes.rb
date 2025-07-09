@@ -16,9 +16,13 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :items
+  resources :profils
+  resources :avatars, only: [ :create, :update, :destroy ]
+
+  post 'checkout/create', to: 'checkout#create'
+
   get "profil", to: "profils#index", as: :profil
   patch "profil", to: "profils#update"
   put "profil", to: "profils#update"
   get "profil/edit", to: "profils#edit", as: :edit_profil
-  resources :avatars, only: [ :create, :update, :destroy ]
 end
