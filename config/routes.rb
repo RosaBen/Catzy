@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   patch "profil", to: "profils#update"
   put "profil", to: "profils#update"
   get "profil/edit", to: "profils#edit", as: :edit_profil
+  resource :profil, only: [:destroy]
 end
