@@ -34,5 +34,10 @@
         </div>
       </div>
     <% end %>
-  </div>
-</div> 
+
+    <p style="color: green"><%= notice %></p>
+<% if params[:success] %>
+  <p>Paiement réussi ! 🎉</p>
+<% elsif params[:canceled] %>
+  <p>Paiement annulé.</p>
+<% end %>
