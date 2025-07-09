@@ -34,3 +34,5 @@
 /config/master.key
 
 Catzy\config\database.yml
+
+/config/credentials/production.key
