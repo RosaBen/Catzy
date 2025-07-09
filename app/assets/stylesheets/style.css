@@ -16,6 +16,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-dark-gray)!important;
 }
 
+p.lead{
+  font-size: 1.6rem;
+}
+
 /* --------------------------------- */
 /*             Navbar                */
 /* --------------------------------- */
@@ -130,34 +134,34 @@ main {
   border: none;
 }
 
-button.btn.btn-primary {
+.btn.btn-primary {
   background-color: var(--color-primary-color);        
   color: var(--color-dark-gray);               
  
 }
 
-button.btn.btn-danger {
+.btn.btn-danger {
   background-color: var(--color-danger);       
   color: var(--color-dark-gray);               
 }
 
-button.btn.btn-warning {
+.btn.btn-warning {
   background-color: var(--color-warning);       
   color: var(--color-dark-gray);               
 }
 
-button.btn.btn-success {
+.btn.btn-success {
   background-color: var(--color-success);       
   color: var(--color-dark-gray);               
 }
 
-button.btn.btn-lg {
+.btn.btn-lg {
   border-radius: 26px;  
   font-size: 1.4rem;        
   padding: 12px 26px;
 }
 
-button.btn.btn-sm {
+.btn.btn-sm {
   border-radius: 25px;  
   font-size: 1rem;        
   padding: 6px 18px;
@@ -172,13 +176,15 @@ button.btn.btn-sm {
 /*               Card                */
 /* --------------------------------- */
 
-.card-custom {
+.card {
   border: 4px solid var(--color-primary-color);
   border-radius: 20px;
+}
+
+.card-custom {
   background-color: #fff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.02);
   max-width: 420px;  
-  
 }
 
 .card-img-custom {
@@ -212,5 +218,12 @@ button.btn.btn-sm {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
 }
 
+.custom-link {
+  color: var(--color-dark-gray); 
+  text-decoration: none;
+}
 
+.custom-link:hover {
+  text-decoration: underline;
+}
 
