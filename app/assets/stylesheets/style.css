@@ -227,3 +227,14 @@ main {
   text-decoration: underline;
 }
 
+/* --------------------------------- */
+/*              Avatar               */
+/* --------------------------------- */
+
+.avatar-profil {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: none;
+}
