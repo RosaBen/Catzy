@@ -6,7 +6,7 @@
   <h3><%= @item&.title %></h3>
   <p><strong>Description:</strong> <%= @item&.description %></p>
   <p><strong>Price:</strong> <%= @item&.price %>€</p>
-  <button type="button">Ajouter au panier</button>
+  <%= button_to "Ajouter au panier", checkout_create_path(item_id: @item.id), method: :post, data: { turbo: false } %>
 </div>
 <div>
   <h3>Articles similaires: </h3>

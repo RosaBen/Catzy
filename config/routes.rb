@@ -18,4 +18,6 @@ Rails.application.routes.draw do
 
   resources :items
   resources :profils
+
+  post 'checkout/create', to: 'checkout#create'
 end
