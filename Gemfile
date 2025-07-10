@@ -68,4 +68,5 @@ end
 gem "faker"
 
 gem "devise"
+gem 'stripe'
 
