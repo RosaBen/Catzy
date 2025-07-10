@@ -1,4 +1,6 @@
 class CheckoutController < ApplicationController
+   before_action :authenticate_user!
+
   def create
     item = Item.find(params[:item_id])
 
@@ -23,7 +25,7 @@ class CheckoutController < ApplicationController
   end
 
   def create_cart_checkout
-  cart = current_user.cart
+  cart = current_cart
 
   if cart.blank? || cart.items.empty?
     redirect_to cart_path, alert: "Votre panier est vide."
