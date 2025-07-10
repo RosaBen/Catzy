@@ -10,8 +10,10 @@
     <% end %>
   </ul>
     
-    <hr>
-  <p><strong>Total : <%= @total_price %> €</strong></p>
+<hr>
+<p><strong>Total : <%= @total_price %> €</strong></p>
+
+<%= button_to "Effectuer le paiement", checkout_create_path, method: :post %>
 
 <% else %>
   <p>Votre panier est vide.</p>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   delete "cart_items/remove/:item_id", to: "cart_items#destroy", as: :remove_cart_item
 
 
-  post "checkout/create", to: "checkout#create"
+post "checkout/create", to: "checkout#create", as: :checkout_create
+get "order/success", to: "orders#success", as: :order_success
 
 end
