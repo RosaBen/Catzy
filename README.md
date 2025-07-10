@@ -1,4 +1,27 @@
-# Cahier des charges Catzy
+# Catzy - Plateforme de vente de photos de chatons
+
+## Présentation
+Nous comptons faire un site de vente en ligne de photos de chatons. Ce site s'intégrer dans l'univers concurrentiel de la photographie animalière.
+
+Nos principaux concurrents sont les plateformes communautaires de vente en ligne, comme par exemple Etsy ou Redbubble.
+
+Dans le cadre de ce projet, nous voulons réaliser notre plateforme de vente de photos de chatons.
+
+L'objectif est d'avoir une plateforme qui présente nos photos de chatons et qui puisse les vendre. L'intérêt est d'avoir une visibilité en ligne sur nos activités.
+
+## Déploiement sur Render
+
+### Variables d'environnement à configurer :
+- `DATABASE_URL` : URL de la base de données PostgreSQL (fournie par Render)
+- `RAILS_MASTER_KEY` : Clé master Rails (contenu du fichier config/master.key)
+- `RAILS_ENV=production`
+
+### Configuration Render :
+- **Build Command** : `./render-build.sh`
+- **Start Command** : `bundle exec rails server -p $PORT`
+- **Environment** : Ruby
+
+### Business modeles charges Catzy
 ## Présentation
 Nous comptons faire un site de vente en ligne de photos de chatons. Ce site s’intégrer dans l’univers concurrentiel de la photographie animalière.
 
