@@ -12,4 +12,15 @@ class OrderMailer < ApplicationMailer
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
     mail(to: @user.email, subject: 'Confirmation de votre commande ##{@order.id}') 
   end
+
+  def order_notification_admin(order)
+    @order = order
+    @user = @order.user
+
+    
+    admin_email = 
+
+    mail(to: admin_email, subject: "Nouvelle commande passée : ##{@order.id}")
+  end
+
 end
