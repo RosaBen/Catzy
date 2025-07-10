@@ -1,19 +1,22 @@
-<h1>Merci pour votre commande </h1>
+<div class="container">
 
-<p>Votre paiement a bien été reçu. Nous préparons votre commande !</p>
+  <h1 class="mt-5 mb-5">Merci pour votre commande </h1>
 
-<p><%= flash[:notice] %></p>
+  <p>Votre paiement a bien été reçu. Nous préparons votre commande !</p>
 
-<h2>Récapitulatif :</h2>
+  <p><%= flash[:notice] %></p>
 
-<% if @order.items.any? %>
-  <ul>
-    <% @order.items.each do |item| %>
-      <li><%= item.title %> - <%= number_to_currency(item.price, unit: "€") %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <h2>Récapitulatif :</h2>
+
+  <% if @order.items.any? %>
+    <ul>
+      <% @order.items.each do |item| %>
+        <li><%= item.title %> - <%= number_to_currency(item.price, unit: "€") %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
 
-<%= link_to "Retour à l'accueil", root_path %>
-<%= link_to "Voir mon panier", cart_path %>
+  <%= link_to "Retour à l'accueil", root_path, class: "btn btn-primary mb-4" %>
+  <%= link_to "Voir mon panier", cart_path, class: "btn btn-primary mb-4" %>
+</div>
