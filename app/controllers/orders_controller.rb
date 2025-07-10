@@ -17,4 +17,8 @@ class OrdersController < ApplicationController
 
     end
   end
+
+  OrderMailer.order_confirmation(@order).deliver_now
+  OrderMailer.order_notification_admin(@order).deliver_now
+  
 end
