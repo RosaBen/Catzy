@@ -10,9 +10,25 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <%= link_to new_user_session_path, class: "nav-link" do %>
-            <iconify-icon icon="mage:user-fill"></iconify-icon>
-          <% end %>
+          <li class="nav-item dropdown">
+            <% if current_user %>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <iconify-icon icon="mage:user-fill"></iconify-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><%= link_to "Mon profil", profil_path, class: "dropdown-item" %></li>
+                <li>
+                  <%= form_with url: destroy_user_session_path, method: :delete, local: true do %>
+                    <%= submit_tag "Déconnexion", class: "dropdown-item btn btn-link", data: { turbo: false } %>
+                  <% end %>
+                </li>
+              </ul>
+            <% else %>
+              <%= link_to new_user_session_path, class: "nav-link" do %>
+                <iconify-icon icon="mage:user-fill"></iconify-icon>
+              <% end %>
+            <% end %>
+          </li>
         </li>
         <li class="nav-item">
           <%= link_to "#", class: "nav-link" do %>

@@ -29,6 +29,14 @@ class ProfilsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = current_user
+    @user.destroy
+    reset_session  
+    flash[:notice] = "Compte supprimé avec succès."
+    redirect_to root_path
+  end
+
   private
 
   def user_params
