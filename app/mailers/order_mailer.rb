@@ -21,6 +21,7 @@ class OrderMailer < ApplicationMailer
     admin_email = 
 
     mail(to: admin_email, subject: "Nouvelle commande passée : ##{@order.id}")
+    
   end
 
 end
