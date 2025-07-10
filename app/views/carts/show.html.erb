@@ -13,7 +13,7 @@
 <hr>
 <p><strong>Total : <%= @total_price %> €</strong></p>
 
-<%= button_to "Effectuer le paiement", checkout_create_path, method: :post %>
+<%= button_to "Payer mon panier", checkout_cart_path, method: :post, data: { turbo: false } %>
 
 <% else %>
   <p>Votre panier est vide.</p>
