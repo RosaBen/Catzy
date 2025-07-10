@@ -1,0 +1,11 @@
+<h1>Mon panier</h1>
+
+<% if @cart && @cart.items.any? %>
+  <ul>
+    <% @cart.items.each do |item| %>
+      <li><%= item.title %> - <%= item.price %> €</li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Votre panier est vide.</p>
+<% end %>
