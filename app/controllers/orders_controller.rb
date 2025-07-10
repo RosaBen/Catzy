@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-
+  
   def success
     cart = current_user.cart
 
@@ -15,10 +15,18 @@ class OrdersController < ApplicationController
       # Vider le panier
       cart.items.clear
 
+      if @order.persisted?
+        # Envoi des emails
+        OrderMailer.order_confirmation(@order).deliver_now
+        OrderMailer.order_notification_admin(@order).deliver_now
+      else
+        Rails.logger.error "Commande non persistée !"
+      end
+    else
+      redirect_to root_path, alert: "Aucun article dans le panier."
     end
   end
 
-  OrderMailer.order_confirmation(@order).deliver_now
-  OrderMailer.order_notification_admin(@order).deliver_now
   
+
 end
