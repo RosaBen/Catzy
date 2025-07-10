@@ -1,0 +1,20 @@
+<h1>Mon panier</h1>
+
+<% if @cart && @cart.items.any? %>
+  <ul>
+    <% @cart.items.each do |item| %>
+      <li>
+        <%= item.title %> - <%= item.price %> €
+        <%= button_to "Retirer", remove_cart_item_path(item_id: item.id), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+    
+<hr>
+<p><strong>Total : <%= @total_price %> €</strong></p>
+
+<%= button_to "Effectuer le paiement", checkout_create_path, method: :post %>
+
+<% else %>
+  <p>Votre panier est vide.</p>
+<% end %>
