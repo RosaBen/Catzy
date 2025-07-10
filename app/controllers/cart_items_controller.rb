@@ -12,4 +12,17 @@ class CartItemsController < ApplicationController
       redirect_to cart_path, notice: "Article ajouté au panier."
     end
   end
+
+  def destroy
+  cart = current_user.cart
+  item = Item.find(params[:item_id])
+
+  if cart && item
+    cart.items.destroy(item)
+    redirect_to cart_path, notice: "Article supprimé du panier."
+  else
+    redirect_to cart_path, alert: "Impossible de supprimer l'article."
+  end
+end
+
 end

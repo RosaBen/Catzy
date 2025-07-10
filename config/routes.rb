@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :avatars, only: [ :create, :update, :destroy ]
   resource :cart, only: [:show]
   resources :cart_items, only: [:create]
-  
+  delete "cart_items/remove/:item_id", to: "cart_items#destroy", as: :remove_cart_item
+
+
   post "checkout/create", to: "checkout#create"
 
 end

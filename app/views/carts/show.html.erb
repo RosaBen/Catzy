@@ -3,7 +3,10 @@
 <% if @cart && @cart.items.any? %>
   <ul>
     <% @cart.items.each do |item| %>
-      <li><%= item.title %> - <%= item.price %> €</li>
+      <li>
+        <%= item.title %> - <%= item.price %> €
+        <%= button_to "Retirer", remove_cart_item_path(item_id: item.id), method: :delete %>
+      </li>
     <% end %>
   </ul>
 <% else %>
