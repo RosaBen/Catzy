@@ -82,8 +82,10 @@ production:
   primary: &primary_production
     <<: *default
     database: catzy_production
-  username: <%= ENV.fetch("DATABASE_USER") %>
-  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+    username: catzy
+    password: <%= ENV["CATZY_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   cache:
     <<: *primary_production
     database: catzy_production_cache
