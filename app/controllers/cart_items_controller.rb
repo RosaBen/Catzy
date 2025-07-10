@@ -9,7 +9,7 @@ class CartItemsController < ApplicationController
       redirect_to item_path(item), notice: "Cet article est déjà dans votre panier."
     else
       cart.items << item
-      redirect_to cart_path, notice: "Article ajouté au panier."
+      redirect_to item_path(item), notice: "Article ajouté au panier."
     end
   end
 
