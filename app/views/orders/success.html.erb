@@ -1,0 +1,19 @@
+<h1>Merci pour votre commande </h1>
+
+<p>Votre paiement a bien été reçu. Nous préparons votre commande !</p>
+
+<p><%= flash[:notice] %></p>
+
+<h2>Récapitulatif :</h2>
+
+<% if @order.items.any? %>
+  <ul>
+    <% @order.items.each do |item| %>
+      <li><%= item.title %> - <%= number_to_currency(item.price, unit: "€") %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= link_to "Retour à l'accueil", root_path %>
+<%= link_to "Voir mon panier", cart_path %>

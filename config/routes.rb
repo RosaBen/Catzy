@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "orders/success"
   get "carts/show"
   get "cart_items/create"
   devise_for :users
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
 
 
 post "checkout/create", to: "checkout#create", as: :checkout_create
+post "checkout/cart", to: "checkout#create_cart_checkout", as: :checkout_cart
+
 get "order/success", to: "orders#success", as: :order_success
 
 end
