@@ -66,6 +66,9 @@ group :test do
 end
 
 gem "faker"
-gem "stripe"
+
 gem "devise"
+
+gem "stripe", "~> 15.3"
+gem "table_print", "~> 1.5"
 

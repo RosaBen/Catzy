@@ -18,7 +18,7 @@ class OrderMailer < ApplicationMailer
     @user = @order.user
 
     
-    admin_email = 
+    admin_email = "ebony.breitenberg73@yopmail.com"
 
     mail(to: admin_email, subject: "Nouvelle commande passée : ##{@order.id}")
     
