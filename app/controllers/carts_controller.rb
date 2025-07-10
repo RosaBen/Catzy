@@ -3,5 +3,6 @@ class CartsController < ApplicationController
 
   def show
     @cart = current_user.cart
+    @total_price = @cart.items.sum(&:price)
   end
 end
