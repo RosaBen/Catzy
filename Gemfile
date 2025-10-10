@@ -69,6 +69,6 @@ gem "faker"
 
 gem "devise"
 
-gem "stripe", "~> 15.3"
+gem "stripe", "~> 17.0"
 gem "table_print", "~> 1.5"
 
